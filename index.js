@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express()
 const port = 5000;
 
+
 const uri =
   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.r5j5a.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
@@ -22,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Server successfully run.')
+    res.send('Welcome to voluenteer Network Server.')
   })
 
 
@@ -111,6 +112,7 @@ run().catch(console.dir);
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
+app.listen(process.env.PORT||port)
